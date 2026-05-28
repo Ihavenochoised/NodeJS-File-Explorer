@@ -9,7 +9,10 @@
   },
   "type": "module",
   "author": "Tian Tian",
-  "license": "ISC",
+  "license": {
+    "type": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "dotenv": "^17.3.1",
