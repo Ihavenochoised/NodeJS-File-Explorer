@@ -1,7 +1,7 @@
 {
-  "name": "clouddb",
+  "name": "file-explorer",
   "version": "1.0.0",
-  "description": "Cloud Database",
+  "description": "A simple file explorer for your folders. Built with Node.js and Express.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,11 +11,15 @@
   "author": "Tian Tian",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.3.1",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
     "multer": "^2.0.0"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true
   }
 }
