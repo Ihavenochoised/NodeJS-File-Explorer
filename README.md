@@ -183,7 +183,7 @@ node index.js  # Start the server
 
 ## 📄 License
 
-ISC
+MIT
 
 ## 👤 Author
 
