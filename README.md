@@ -24,6 +24,7 @@ A secure Express.js web application for managing and exploring files on a local 
 
 > [!NOTE]
 > **This project was made for Linux systems!**
+> 
 > For Windows systems, it should work the same, just replace Linux directory paths with Windows (C:\\)
 > 
 > It is recommended for Windows users to use the setup script "node setup.js" 
@@ -69,10 +70,10 @@ npm install
 Create a `.env` file in the project root (optional):
 
 ```env
-PORT=443
-SHARE_PATH=/path/to/your/directory
-ADMIN_USERNAME=yourusername
-ADMIN_PASSWORD=yourpassword
+PORT=443                            (optional, default 80 or 443)
+SHARE_PATH=/path/to/your/directory  (required)
+ADMIN_USERNAME=yourusername         (optional)
+ADMIN_PASSWORD=yourpassword         (optional)
 ```
 
 ## 🎯 Usage
@@ -199,7 +200,3 @@ Tian Tian
 - **File Explorer**: `https://localhost:443/` - Browse and manage files (requires authentication)
 - **Logout**: `https://localhost:443/logout` - End session
 
-## Environment Variables
-
-- `PORT` - Server port (default: 443)
-- `USB_PATH` - Path to directory containing files to serve (required)
