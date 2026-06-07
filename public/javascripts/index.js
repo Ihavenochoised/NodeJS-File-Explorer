@@ -101,7 +101,7 @@ uploadForm.onsubmit = (e) => {
     document.getElementById("currentPathInput").value = currentPath; // set this dynamically
     e.preventDefault();
     const formData = new FormData(uploadForm);
-    fetch(`/upload`, {
+    fetch(`/api/upload`, {
         method: "POST",
         body: formData
     }).then(res => res.text())
@@ -117,7 +117,7 @@ document.getElementById("createFolderBtn").onclick = () => {
         return;
     }
 
-    fetch("/create-folder", {
+    fetch("/api/create-folder", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
