@@ -70,4 +70,6 @@ if (!fs.existsSync(keyFile) || !fs.existsSync(certFile)) {
         console.log(`✅  HTTPS server running at https://localhost:${PORT}/`);
     });
 }
-
+if (process.env.DEBUG_CWD) {
+    console.log(`File is running in ${process.cwd()}`);
+}
