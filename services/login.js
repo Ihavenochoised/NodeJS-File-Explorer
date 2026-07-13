@@ -27,14 +27,18 @@ router.post("/", loginLimiter, express.urlencoded({ extended: true }), (req, res
         const hashedAdminPassword = bcrypt.hashSync(ADMIN_PASSWORD, 10);
         if (username === ADMIN_USERNAME && bcrypt.compare(password, hashedAdminPassword)) {
             req.session.loggedIn = true;
-            res.redirect("/");
+            const prefix = req.get("X-App-Prefix") || "";
+            const home = `${prefix}/`;
+            res.redirect(home);
         } else {
             res.send("Login failed 😢");
         }
     } else {
         if (username === "" && password === "") {
             req.session.loggedIn = true;
-            res.redirect("/");
+            const prefix = req.get("X-App-Prefix") || "";
+            const home = `${prefix}/`;
+            res.redirect(home);
         } else {
             res.send("Login failed 😢");
         }

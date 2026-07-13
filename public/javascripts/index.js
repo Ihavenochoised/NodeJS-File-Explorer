@@ -1,12 +1,13 @@
 const listEl = document.getElementById("file-list");
 const uploadForm = document.getElementById("uploadForm");
 const breadcrumbs = document.querySelector(".breadcrumbs");
+const apiBaseUrl = "api";
 
 let currentPath = "";
 
 function fetchFiles(path = "") {
     currentPath = path;
-    fetch(`/api/list?dir=${encodeURIComponent(path)}`)
+    fetch(`${apiBaseUrl}/list?dir=${encodeURIComponent(path)}`)
         .then(res => res.json())
         .then(data => {
             listEl.innerHTML = "";
@@ -48,7 +49,7 @@ function fetchFiles(path = "") {
 
                     deleteBtn.onclick = () => {
                         if (confirm(`Delete folder "${item.name}" and all its contents?`)) {
-                            fetch(`/api/delete?name=${encodeURIComponent(path ? `${path}/${item.name}` : item.name)}`, {
+                            fetch(`${apiBaseUrl}/delete?name=${encodeURIComponent(path ? `${path}/${item.name}` : item.name)}`, {
                                 method: "DELETE"
                             })
                                 .then(res => res.text())
@@ -77,7 +78,7 @@ function fetchFiles(path = "") {
 
                     deleteBtn.onclick = () => {
                         if (confirm(`Delete "${item.name}"?`)) {
-                            fetch(`/api/delete?name=${encodeURIComponent(path ? `${path}/${item.name}` : item.name)}`, {
+                            fetch(`${apiBaseUrl}/delete?name=${encodeURIComponent(path ? `${path}/${item.name}` : item.name)}`, {
                                 method: "DELETE"
                             })
                                 .then(res => res.text())
@@ -101,7 +102,7 @@ uploadForm.onsubmit = (e) => {
     document.getElementById("currentPathInput").value = currentPath; // set this dynamically
     e.preventDefault();
     const formData = new FormData(uploadForm);
-    fetch(`/api/upload`, {
+    fetch(`${apiBaseUrl}/upload`, {
         method: "POST",
         body: formData
     }).then(res => res.text())
@@ -117,7 +118,7 @@ document.getElementById("createFolderBtn").onclick = () => {
         return;
     }
 
-    fetch("/api/create-folder", {
+    fetch(`${apiBaseUrl}/create-folder`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
