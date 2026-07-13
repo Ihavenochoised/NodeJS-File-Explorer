@@ -17,7 +17,8 @@ router.get("/login", (req, res) => {
 });
 router.get("/logout", (req, res) => {
     req.session.destroy(() => {
-        res.redirect("/login");
+        const prefix = req.get("X-App-Prefix") || "";
+        res.redirect(`${prefix}/login`);
     });
 });
 
